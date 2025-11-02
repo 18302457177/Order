@@ -13,6 +13,7 @@
         android:theme="@style/Theme.Order">
         <activity
             android:name=".activity.man.RegisterManActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.user.RegisterUserActivity"
