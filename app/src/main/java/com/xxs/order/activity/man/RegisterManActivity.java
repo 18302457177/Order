@@ -23,12 +23,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.xxs.order.R;
+import com.xxs.order.dao.AdminDao;
+import com.xxs.order.util.FileImgUtil;
+
+import java.util.UUID;
 
 public class RegisterManActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<String> getContentLauncher;
 
-
+    Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +50,13 @@ public class RegisterManActivity extends AppCompatActivity {
         ImageView imgText = findViewById(R.id.register_man_tx);
 
 
+
         getContentLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
                 if(result!=null){
                     imgText.setImageURI(result);
+                    uri = result;
                 }else{
                     Toast.makeText(RegisterManActivity.this, "请选择图片", Toast.LENGTH_SHORT).show();
                 }
@@ -90,6 +96,16 @@ public class RegisterManActivity extends AppCompatActivity {
                     Toast.makeText(RegisterManActivity.this, "请输入店铺类型", Toast.LENGTH_SHORT).show();
                 } else if(name.isEmpty()){
                     Toast.makeText(RegisterManActivity.this, "请输入店铺名称", Toast.LENGTH_SHORT).show();
+                }else {
+                    String path = FileImgUtil.getImageName();
+                    FileImgUtil.saveImageBitmapToFileImg(uri,RegisterManActivity.this,path);
+                    int i = AdminDao.saveBusinessUser(id, pwd, name, des, type, path);
+                    if(i == 1){
+                        Toast.makeText(RegisterManActivity.this, "注册商家成功", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(RegisterManActivity.this, "注册商家失败", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
 

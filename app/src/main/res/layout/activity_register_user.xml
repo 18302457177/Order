@@ -8,6 +8,7 @@
     tools:context=".activity.user.RegisterUserActivity"
     android:orientation="vertical">
      <androidx.appcompat.widget.Toolbar
+         android:id="@+id/register_user_toolbar"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          app:title="注册外卖用户"
@@ -26,6 +27,7 @@
               android:orientation="vertical"
               android:layout_gravity="center_vertical|center_horizontal">
                <ImageView
+                   android:id="@+id/register_user_tx"
                    android:layout_width="match_parent"
                    android:layout_height="90dp"
                    android:src="@drawable/upimg"
@@ -48,48 +50,68 @@
                    android:gravity="center_horizontal|center_vertical"
                    />
                <EditText
-                   android:id="@+id/login_account"
+
+                   android:id="@+id/register_user_account"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="请输入店铺账号"
                    android:layout_marginTop="50dp"
                    />
                <EditText
-                   android:id="@+id/login_pwd"
+                   android:id="@+id/register_user_pwd"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:hint="请输入店铺密码"
                    android:layout_marginTop="10dp"
                    android:inputType="textPassword"
                    />
+
                <EditText
-                   android:id="@+id/login_account1"
+                   android:id="@+id/register_user_name"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="请输入店铺名称"
+                   android:hint="请输入用户昵称"
+                   android:layout_marginTop="10dp"
+                   />
+               <RadioGroup
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/register_user_nan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="男"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/register_user_nv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="女"
+                        android:layout_weight="1"/>
+
+               </RadioGroup>
+               <EditText
+                   android:id="@+id/register_user_address"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="请输入家庭住址"
                    android:layout_marginTop="10dp"
                    />
                <EditText
-                   android:id="@+id/login_account11"
+                   android:id="@+id/register_user_phone"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="请输入店铺描述"
-                   android:layout_marginTop="10dp"
-                   />
-               <EditText
-                   android:id="@+id/login_account111"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:hint="请输入店铺类型"
+                   android:hint="请输入联系方式"
                    android:layout_marginTop="10dp"
                    />
                <Button
-                   android:id="@+id/login_denglu"
+                   android:id="@+id/register_user_reg"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_marginTop="10dp"
                    android:background="@color/ThemeRed"
-                   android:text="登录"
+                   android:text="注册用户账号"
                    android:textColor="#FFFFFF"
                    android:foreground="?android:attr/selectableItemBackground"
                    />

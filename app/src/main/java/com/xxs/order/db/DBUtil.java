@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBUtil extends SQLiteOpenHelper {
 
-    private static int version = 2;
+    private static int version = 5;
     private static String databaseName = "db_takeaway.db";
 
     private Context context;
@@ -32,6 +32,19 @@ public class DBUtil extends SQLiteOpenHelper {
                 "s_img varchar(255))");
         db.execSQL("INSERT INTO d_business (s_id,s_pwd,s_name,s_description,s_type,s_img)" +
                 "VALUES (?,?,?,?,?,?)",new Object[]{"root","123456","小明杂货铺","卖一下玩具","玩具店",""});
+
+        db.execSQL("PRAGMA foreign_keys = true");
+
+        db.execSQL("drop table if exists d_user");
+        db.execSQL("create table d_business(s_id varchar(20) primary key," +
+                "s_pwd varchar(20)," +
+                "s_name varchar(20)," +
+                "s_sex varchar(200)," +
+                "s_address varchar(200)," +
+                "s_phone varchar(20)," +
+                "s_img varchar(255))");
+        db.execSQL("INSERT INTO d_business (s_id,s_pwd,s_name,s_sex,s_address,s_phone,s_img)" +
+                "VALUES (?,?,?,?,?,?,?)",new Object[]{"root","123456","小明杂货铺","男","北京","123123",""});
 
         db.execSQL("PRAGMA foreign_keys = true");
     }
