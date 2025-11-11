@@ -18,10 +18,10 @@ public class AdminDao {
             return 0;
         }
     }
-    public static int saveBusinessUser1(String id,String pwd,String name,String sex,String address,String phone,String tx){
+    public static int saveCommonUser1(String id,String pwd,String name,String sex,String address,String phone,String tx){
         String data[] = {id,pwd,name,sex,address,phone,tx};
         try{
-            db.execSQL("INSERT INTO d_business (s_id,s_pwd,s_name,s_sex,s_address,s_phone,s_img)" +
+            db.execSQL("INSERT INTO d_user (s_id,s_pwd,s_name,s_sex,s_address,s_phone,s_img)" +
                     "VALUES (?,?,?,?,?,?,?)",data);
             return 1;
         }catch (Exception e){

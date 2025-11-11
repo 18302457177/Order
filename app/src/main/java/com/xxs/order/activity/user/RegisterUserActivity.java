@@ -33,6 +33,9 @@ public class RegisterUserActivity extends AppCompatActivity {
     private ActivityResultLauncher<String> getContentLauncher;
 
     Uri uri;
+
+    public static String sex;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         EditText pwdText = findViewById(R.id.register_user_pwd);
         EditText nameText = findViewById(R.id.register_user_name);
 
-        String sex = "女";
+        sex = "女";
         RadioButton man = findViewById(R.id.register_user_nan);
         man.setChecked(true);
         if(man.isChecked()){
@@ -107,7 +110,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                 }else {
                     String path = FileImgUtil.getImageName();
                     FileImgUtil.saveImageBitmapToFileImg(uri,RegisterUserActivity.this,path);
-                    int i = AdminDao.saveBusinessUser(id, pwd, name, address, phone, path);
+                    int i = AdminDao.saveCommonUser1(id, pwd, name,"男", address, phone, path);
                     if(i == 1){
                         Toast.makeText(RegisterUserActivity.this, "注册用户成功", Toast.LENGTH_SHORT).show();
                     }else {
